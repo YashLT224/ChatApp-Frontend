@@ -21,17 +21,17 @@ function App() {
       <Routes>
         <Route
           path="/login"
-          element={isAuthenticated() ? <Navigate to="/" replace /> : <Login />}
+          element={isAuthenticated() ? <Navigate to="/"  /> : <Login />}
         />
         <Route
           path="/register"
           element={
-            isAuthenticated() ? <Navigate to="/" replace /> : <Register />
+            isAuthenticated() ? <Navigate to="/"  /> : <Register />
           }
         />
         {/* Protecting the home route */}
         <Route path="/" element={<ProtectedRoute element={Home} />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/"  />} />
       </Routes>
     </div>
   );

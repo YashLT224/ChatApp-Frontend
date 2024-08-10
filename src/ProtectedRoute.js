@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { isAuthenticated } from './auth'; // Ensure the correct path
 
 const ProtectedRoute = ({ element: Component, ...rest }) => {
-  return isAuthenticated() ? <Component {...rest} /> : <Navigate to="/login" replace />;
+  return isAuthenticated() ? <Component {...rest} /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;
