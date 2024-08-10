@@ -45,7 +45,7 @@ const ChatBox = () => {
     return () => {
       ws.close();
     };
-  }, []);
+  }, [ChatInitiator,username]);
 
   const sendMessage = () => {
     if (input.trim() !== '' && socket) {
