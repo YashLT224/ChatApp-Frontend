@@ -1,38 +1,383 @@
-.App {
+*{
+  margin:0;
+  padding:0;
+}
+
+.light-theme{
+  --a-backgroundcolor: rgba(245, 245, 245);
+  --a-color: #ff0084;
+  --b-color: #495057;
+  --c-color: rgba(128, 128, 128, 0.232);
+  --d-color: grey;
+  --a-buttontextcolor: white;
+  --a-textcolor:black;
+  --a-transitionbackgroundcolor: linear-gradient(to left, #8d014b, #ff0084);
+  --a-transitionbackgroundcolor-webkit:-webkit-linear-gradient(to left, #8d014b, #ff0084);
+  --b-transitionbackgroundcolor: linear-gradient(to right, #8d014b, #ff0084);
+  --b-transitionbackgroundcolor-webkit:-webkit-linear-gradient(to right, #8d014b, #ff0084);
+  --a-inputboxshadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  --a-authcardshadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
+  --a-navbarshadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  /* --a-commentshadow: 10px -4px 3px 4px rgba(245, 245, 245, 0.934); */
+  /* --b-commentshadow: 10px 4px 0px 4px rgba(245, 245, 245, 0.95); */
+}
+.dark-theme{
+  --a-backgroundcolor: black;
+  --a-color: #ff0084;
+  --a-buttontextcolor: white;
+  --a-transitionbackgroundcolor: linear-gradient(to left, #8d014b, #ff0084);
+  --a-transitionbackgroundcolor-webkit:-webkit-linear-gradient(to left, #8d014b, #ff0084);
+  --b-transitionbackgroundcolor: linear-gradient(to right, #8d014b, #ff0084);
+  --b-transitionbackgroundcolor-webkit:-webkit-linear-gradient(to right, #8d014b, #ff0084);
+  --a-inputboxshadow: 1px 3px 10px 0px rgba(249, 249, 249, 0.185);
+  --a-authcardshadow: 0px 0px 25px 5px rgba(255, 0, 132, 0.863);
+  --a-textcolor:white;
+  
+}
+
+/* .authcontainer{
+  background-color: var(--a-backgroundcolor);
+  height:100vh;
+  width:100%;
+} */
+
+.Navcontainer{
+  width:100%;
+}
+
+.HomeButton a{
+  text-decoration: none;
+  font-weight:500;
+}
+
+.HomeButton{
+  background-color: transparent;
+  border: 1px solid var(--a-color);
+  color: white;
+  background: var(--a-transitionbackgroundcolor);
+  cursor: pointer;
+
+}
+
+.HomeButton:hover{
+  background: var(--a-transitionbackgroundcolor);
+  color:white;
+}
+
+.ForgotConfirmText{
+  margin-bottom: 30px;
+  color:var(--b-color);
+  font-size: 16px;
+}
+
+.HomeButton {
+  text-decoration: none;
+  padding:10px 25px;
+  border-radius: 20px;
+  font-size: 15px;
+}
+
+.container{
+  background-color: var(--a-backgroundcolor);
+  width:100%;
+  min-height: 100vh;
+  height: auto;
+}
+
+.No-Blogs-Found{
+  width:30%;
+  max-width: 380px;
+  min-width: 280px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.No-Blogs-Found p{
+  color: var(--d-color);
+  font-size: 20px;
+  font-weight: 500;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.form-container{
+  width:30%;
+  max-width: 380px;
+  min-width: 280px;
+  height: auto;
+  box-shadow: var(--a-authcardshadow);
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  overflow: hidden;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form-container h1{
+  font-size: 40px;
+  color:var( --a-color);
+  margin: 30px 0px;
+}
+
+.form-container h2{
+  font-size: 30px;
+  color:var( --a-color);
+  margin: 30px 0px;
+}
+
+.form-content-wrapper{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-evenly;
 }
 
-.App-link {
-  color: #61dafb;
+.form-content-wrapper label{
+  color:var(--d-color);
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
+.form-content-wrapper input{
+  width:80%;
+  height:40px;
+  border-radius: 30px;
+  text-align: center;
+  border: none;
+  box-shadow: var(--a-inputboxshadow);
+  background-color: transparent;
+  margin: 10px 0px;
+  color: var(--a-textcolor);
+}
+
+.form-content-wrapper input:focus{
+  outline-color: var( --a-color);
+}
+.error-span{
+  color:red;
+  font-weight: 500;
+}
+
+.form-content-wrapper button{
+  width:50%;
+  height: 40px;
+  border-radius: 25px;
+  margin: 10px 0px 30px 0px;
+  background: var( --a-color);  /* fallback for old browsers */
+  background: var(--a-transitionbackgroundcolor-webkit);  /*Chrome 10-25, Safari 5.1-6 */
+  background: var(--a-transitionbackgroundcolor); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: var(--a-buttontextcolor  );
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight:500;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+ 
+}
+
+.form-content-wrapper button:hover{
+  transition: 10s;
+  background: var(--b-transitionbackgroundcolor-webkit);  /*Chrome 10-25, Safari 5.1-6 */
+  background: var(--b-transitionbackgroundcolor);
+}
+.form-content-wrapper a{
+  margin: 20px 0px;
+  text-decoration: none;
+  color:rgb(96, 96, 96);
+  text-decoration: underline;
+}
+.signup-span {
+  color:var(--a-textcolor);
+  margin-bottom: 50px;
+}
+.signup-span a{
+  color: var( --a-color);
+}
+
+.loader {
+  margin-left: auto;
+  margin-right: auto;
+  width: 20px;
+  height: 20px;
+  padding-left: 0;
+}
+.loader:after {
+  content: ' ';
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 3px solid var(--a-color);
+  border-color: var(--a-color) var(--a-color) var(--a-color) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+.page-loader-container{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  background-color: rgba(215, 215, 215, 0.9);
+  z-index: 10;
+}
+.page-loader {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+}
+.page-loader:after {
+  content: ' ';
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid var(--a-color);
+  /* border-color: var(--a-color) var(--a-color) var(--a-color) transparent; */
+  border-color: var(--a-color)  transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
+}
+
+.page-loader-loading{
+  text-align: center;
+  font-size: 23px;
+  font-family:'Times New Roman', Times, serif;
+  color: var(--a-color);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:var(--a-backgroundcolor);
+  top: 0; 
+  width: 100%;
+  box-shadow: var(--a-navbarshadow);
+}
+
+ 
+ 
+ 
+ 
+
+ 
+.NavLoginBtn{
+  color: var(--a-color);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 500;
+
+}
+
+nav .menu {
+  display: none;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2.25rem;
+  height: 2rem;
+}
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+.error-message{
+  margin: 4px 0px;
+   color:red;
+   font-size:12px;
+}
+
+
+
+
+
+
+/* App.css */
+
+.navbar {
+  width:auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to left, #8d014b, #ff0084);
+  padding: 10px 20px;
+}
+
+.navbar-brand a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 1rem;
+}
+
+.navbar-link:hover {
+  text-decoration: underline;
+}
+
+.navbar-username {
+  color: white;
+  margin-right: 20px;
+  font-size: 1rem;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #0056b3;
+}
+
+.heading{
+  text-align: center;
+  color: var(--a-color);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-family:Arial, Helvetica, sans-serif
 }

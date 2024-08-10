@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Routes, Route, Navigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import "./App.css";
+import Login from "./Pages/Login";
+import Register from "./Pages/register";
+import Home from "./Pages/Home";
+import Navbar from "./Components/Navbar";
+import { isAuthenticated } from "./auth";
+import ProtectedRoute from "./ProtectedRoute";
 function App() {
+  const username = localStorage.getItem("username");
+  const ChatInitiator = localStorage.getItem("ChatInitiator");
+  useEffect(() => {
+    if (ChatInitiator !== username) {
+      localStorage.removeItem("chatMessages");
+    }
+  }, [username,ChatInitiator]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/login"
+          element={isAuthenticated() ? <Navigate to="/" replace /> : <Login />}
+        />
+        <Route
+          path="/register"
+          element={
+            isAuthenticated() ? <Navigate to="/" replace /> : <Register />
+          }
+        />
+        {/* Protecting the home route */}
+        <Route path="/" element={<ProtectedRoute element={Home} />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </div>
   );
 }
