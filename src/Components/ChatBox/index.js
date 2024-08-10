@@ -15,8 +15,8 @@ const ChatBox = () => {
         setMessages(savedMessages);
       }
     // Create a new WebSocket connection
-    const ws = new WebSocket('ws://localhost:8080');
-
+   // const ws = new WebSocket('ws://localhost:1337');
+     const ws = new WebSocket('wss://certain-light-b0ac84b0f3.strapiapp.com');
     ws.onopen = () => {
       console.log('Connected to WebSocket server');
     };

@@ -45,7 +45,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:1337/api/auth/local/register', {
+      const response = await axios.post('https://certain-light-b0ac84b0f3.strapiapp.com/api/auth/local/register', {
         username,
         email,
         password
