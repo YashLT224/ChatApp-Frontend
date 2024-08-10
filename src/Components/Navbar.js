@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { isAuthenticated, logout } from '../auth'
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  const history = useHistory();
   const username = localStorage.getItem('username');
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    history.push('/login');
   };
 
   return (

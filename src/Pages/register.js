@@ -1,10 +1,10 @@
 import React, { useState} from 'react';
 import {Link} from 'react-router-dom';
 import { ButtonLoader } from '../Components/ButtonLoader';
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from 'axios';  // Optional, if using axios
 const Register = () => {
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -56,7 +56,7 @@ const Register = () => {
         localStorage.setItem('authToken', response.data.jwt);
         localStorage.setItem('username', response.data.user.username);
         localStorage.setItem('email', response.data.user.email);
-        navigate('/');  // Redirect to home page
+        history.push('/');  // Redirect to home page
       }
     } catch (err) {
       setError('Registration failed. Please try again.');

@@ -2,9 +2,9 @@ import React, {Fragment, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { ButtonLoader } from '../Components/ButtonLoader';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 const Login = () => {
-    const navigate = useNavigate();
+    const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -50,7 +50,7 @@ const Login = () => {
             localStorage.setItem('username', response.data.user.username);
             localStorage.setItem('email', response.data.user.email);
     
-            navigate('/');  // Redirect to home page
+            history.push('/');  // Redirect to home page
           }
         } catch (err) {
           setError('Login failed. Please check your credentials and try again.');
