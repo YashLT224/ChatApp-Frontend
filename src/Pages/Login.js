@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { ButtonLoader } from '../Components/ButtonLoader';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
-const Login = () => {
+const Login = ({ setAuthentication}) => {
     const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -49,7 +49,7 @@ const Login = () => {
             localStorage.setItem('authToken', response.data.jwt);
             localStorage.setItem('username', response.data.user.username);
             localStorage.setItem('email', response.data.user.email);
-    
+            setAuthentication(true)
             history.push('/');  // Redirect to home page
           }
         } catch (err) {

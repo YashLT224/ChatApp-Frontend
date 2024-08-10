@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { ButtonLoader } from '../Components/ButtonLoader';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';  // Optional, if using axios
-const Register = () => {
+const Register = ({setAuthentication}) => {
   const history = useHistory();
 
   const [username, setUsername] = useState('');
@@ -56,6 +56,7 @@ const Register = () => {
         localStorage.setItem('authToken', response.data.jwt);
         localStorage.setItem('username', response.data.user.username);
         localStorage.setItem('email', response.data.user.email);
+        setAuthentication(true);
         history.push('/');  // Redirect to home page
       }
     } catch (err) {

@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { isAuthenticated, logout } from '../auth'
+import {  logout } from '../auth'
 
-const Navbar = () => {
+const Navbar = ({authenticated,setAuthentication}) => {
   const history = useHistory();
   const username = localStorage.getItem('username');
 
+
   const handleLogout = () => {
     logout();
+    setAuthentication(false)
     history.push('/login');
   };
+ 
 
   return (
     <nav className="navbar">
@@ -17,7 +20,7 @@ const Navbar = () => {
         <Link to="/">MyChat App</Link>
       </div>
       <div className="navbar-links">
-        {isAuthenticated() ? (
+        {authenticated ? (
           <>
             <span className="navbar-username">Hello, {username}</span>
             <button className="logout-button" onClick={handleLogout}>Logout</button>
